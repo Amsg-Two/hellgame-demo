@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4ewgmn7wnlor"]
+
+[ext_resource type="Texture2D" uid="uid://da5tdinxcd8io" path="res://background.bmp" id="1_j0w6e"]
+[ext_resource type="PackedScene" uid="uid://1vsw6u75rdb" path="res://hud.tscn" id="2_bmxig"]
+[ext_resource type="PackedScene" uid="uid://b0j4jfq8m8oaj" path="res://player.tscn" id="3_64am4"]
+[ext_resource type="PackedScene" uid="uid://bygtr663pojp3" path="res://enemy.tscn" id="4_mnmqs"]
+
+[node name="Main" type="Node"]
+
+[node name="BG" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_j0w6e")
+
+[node name="HUD" parent="." instance=ExtResource("2_bmxig")]
+
+[node name="Five" parent="." instance=ExtResource("3_64am4")]
+position = Vector2(614, 344)
+scale = Vector2(0.517, 0.517)
+unitName = "Mr. Fives"
+
+[node name="Six" parent="." instance=ExtResource("4_mnmqs")]
+position = Vector2(848, 206)
+scale = Vector2(0.517351, 0.517351)
+unitName = "Six"

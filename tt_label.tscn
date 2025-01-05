@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bfh7afx2pm1fw"]
+
+[node name="TTLabel" type="RichTextLabel"]
+z_index = 1
+z_as_relative = false
+offset_right = 1.0
+size_flags_vertical = 3
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 0

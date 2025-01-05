@@ -1,0 +1,113 @@
+[gd_scene load_steps=8 format=3 uid="uid://1vsw6u75rdb"]
+
+[ext_resource type="Script" path="res://menuscripts/menugen.gd" id="1_247at"]
+[ext_resource type="Script" path="res://menuscripts/chain_act_box.gd" id="1_tv00g"]
+[ext_resource type="Script" path="res://menuscripts/buttongen.gd" id="2_5mcx3"]
+[ext_resource type="Script" path="res://menuscripts/menu_button_handler.gd" id="3_8dkpg"]
+[ext_resource type="Script" path="res://chainscripts/chain_scroll.gd" id="3_j20nw"]
+[ext_resource type="Script" path="res://chainscripts/chain_holder.gd" id="4_bb8wr"]
+[ext_resource type="Script" path="res://chainscripts/exec_chain_button.gd" id="7_i52it"]
+
+[node name="ChainHUD" type="CanvasLayer"]
+
+[node name="ChainActScroll" type="ScrollContainer" parent="."]
+offset_left = 16.0
+offset_top = 19.0
+offset_right = 223.0
+offset_bottom = 415.0
+script = ExtResource("1_247at")
+
+[node name="ChainActBox" type="VBoxContainer" parent="ChainActScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("1_tv00g")
+
+[node name="PointBar" type="ProgressBar" parent="."]
+visible = false
+offset_right = 4.0
+offset_bottom = 27.0
+show_percentage = false
+
+[node name="ChainScroll" type="ScrollContainer" parent="."]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("3_j20nw")
+
+[node name="ChainScrollBox" type="PanelContainer" parent="ChainScroll"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ChainScrollEmpty" type="Label" parent="ChainScroll/ChainScrollBox"]
+layout_mode = 2
+text = "No items in chain.
+(Select actions from
+the menu on the left.)"
+horizontal_alignment = 1
+vertical_alignment = 1
+text_overrun_behavior = 4
+
+[node name="ChainScrollPoints" type="Label" parent="ChainScroll/ChainScrollBox"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+horizontal_alignment = 2
+
+[node name="ChainMargin" type="MarginContainer" parent="ChainScroll/ChainScrollBox"]
+layout_mode = 2
+
+[node name="ChainHolder" type="VBoxContainer" parent="ChainScroll/ChainScrollBox/ChainMargin"]
+clip_contents = true
+layout_mode = 2
+script = ExtResource("4_bb8wr")
+
+[node name="POptMenu" type="HBoxContainer" parent="."]
+offset_left = 707.0
+offset_top = 526.0
+offset_right = 1124.0
+offset_bottom = 624.0
+metadata/_edit_group_ = true
+
+[node name="POptChain" type="Button" parent="POptMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+text = "Chain"
+script = ExtResource("2_5mcx3")
+
+[node name="POptInv" type="Button" parent="POptMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+text = "Inventory"
+script = ExtResource("2_5mcx3")
+
+[node name="InvBox" type="PanelContainer" parent="."]
+visible = false
+offset_left = 23.0
+offset_top = 29.0
+offset_right = 229.0
+offset_bottom = 406.0
+script = ExtResource("1_247at")
+
+[node name="Placeholder" type="Label" parent="InvBox"]
+layout_mode = 2
+text = "Inventory will go here
+eventually"
+horizontal_alignment = 1
+
+[node name="MenuButtonHandler" type="Node" parent="."]
+script = ExtResource("3_8dkpg")
+
+[node name="ExecChainButton" type="Button" parent="."]
+visible = false
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Run Chain"
+script = ExtResource("7_i52it")
+
+[connection signal="attach_menu" from="POptMenu/POptChain" to="ChainActScroll" method="_on_attach_menu"]
+[connection signal="attach_menu" from="POptMenu/POptInv" to="InvBox" method="_on_attach_menu"]

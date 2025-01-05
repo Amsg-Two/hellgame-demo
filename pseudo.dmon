@@ -1,0 +1,28 @@
+%ACTSET
+
+DEFINE wait
+ASSIGN *UNIT:ROLL *POINTS
+PRINT ["LANG_UNITWAIT"]
+END
+
+DEFINE attack
+ATTACK *TARGET *UNIT ["configuration params for attack"]
+END
+
+DEFINE heal
+HEAL *TARGET ["configuration params for heal"]
+PRINT ["LANG_UNITHEAL"]
+END
+
+DEFINE bless
+HEAL **ALL ^ :TYPE *UNIT:TYPE ["configuration params for bless"]
+PRINT ["LANG_UNITGROUPHEAL"]
+END
+
+DEFINE use
+CALL *ITEM [NONE]
+END
+
+DEFINE equip
+ASSIGN *UNIT:HELD *ITEM
+END
