@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://1vsw6u75rdb"]
+[gd_scene load_steps=9 format=3 uid="uid://1vsw6u75rdb"]
 
 [ext_resource type="Script" path="res://menuscripts/menugen.gd" id="1_247at"]
 [ext_resource type="Script" path="res://menuscripts/chain_act_box.gd" id="1_tv00g"]
@@ -7,6 +7,12 @@
 [ext_resource type="Script" path="res://chainscripts/chain_scroll.gd" id="3_j20nw"]
 [ext_resource type="Script" path="res://chainscripts/chain_holder.gd" id="4_bb8wr"]
 [ext_resource type="Script" path="res://chainscripts/exec_chain_button.gd" id="7_i52it"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xt7j0"]
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
 
 [node name="ChainHUD" type="CanvasLayer"]
 
@@ -108,6 +114,19 @@ offset_right = 8.0
 offset_bottom = 8.0
 text = "Run Chain"
 script = ExtResource("7_i52it")
+
+[node name="TestPrintLabel" type="Label" parent="."]
+visible = false
+offset_left = 771.0
+offset_top = 418.0
+offset_right = 1054.0
+offset_bottom = 510.0
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_xt7j0")
+text = "Placeholder"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [connection signal="attach_menu" from="POptMenu/POptChain" to="ChainActScroll" method="_on_attach_menu"]
 [connection signal="attach_menu" from="POptMenu/POptInv" to="InvBox" method="_on_attach_menu"]

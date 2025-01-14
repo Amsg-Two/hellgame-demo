@@ -1,12 +1,14 @@
 extends Button
 
 @onready var actscroller = get_node("../ChainActScroll")
+@onready var manager = get_node("/root/Main/Manager")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.position.x = actscroller.position.x
 	self.size = Vector2(actscroller.size.x * 0.8, self.size.y * 1.8)
 	self.pressed.connect(_on_pressed)
+	self.pressed.connect(manager._on_execute_chain)
 	call_deferred("_on_update_actscroll_size")
 
 
@@ -24,6 +26,4 @@ func _on_update_actscroll_size() -> void:
 		self.position.y = actscroller.position.y + actscroller.size.y + 10
 
 func _on_pressed():
-	for item in Balls.chain:
-		for instruct in Balls.actset[item[0]]:
-			pass
+	pass

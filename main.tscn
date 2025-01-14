@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4ewgmn7wnlor"]
+[gd_scene load_steps=7 format=3 uid="uid://c4ewgmn7wnlor"]
 
 [ext_resource type="Texture2D" uid="uid://da5tdinxcd8io" path="res://background.bmp" id="1_j0w6e"]
+[ext_resource type="Script" path="res://main.gd" id="1_n6i8u"]
 [ext_resource type="PackedScene" uid="uid://1vsw6u75rdb" path="res://hud.tscn" id="2_bmxig"]
 [ext_resource type="PackedScene" uid="uid://b0j4jfq8m8oaj" path="res://player.tscn" id="3_64am4"]
 [ext_resource type="PackedScene" uid="uid://bygtr663pojp3" path="res://enemy.tscn" id="4_mnmqs"]
+[ext_resource type="Script" path="res://battle_manager.gd" id="5_g81r5"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_n6i8u")
+playerUnit = ExtResource("3_64am4")
+enemyUnit = ExtResource("4_mnmqs")
 
 [node name="BG" type="TextureRect" parent="."]
 anchors_preset = 15
@@ -17,12 +22,5 @@ texture = ExtResource("1_j0w6e")
 
 [node name="HUD" parent="." instance=ExtResource("2_bmxig")]
 
-[node name="Five" parent="." instance=ExtResource("3_64am4")]
-position = Vector2(614, 344)
-scale = Vector2(0.517, 0.517)
-unitName = "Mr. Fives"
-
-[node name="Six" parent="." instance=ExtResource("4_mnmqs")]
-position = Vector2(848, 206)
-scale = Vector2(0.517351, 0.517351)
-unitName = "Six"
+[node name="Manager" type="Node" parent="."]
+script = ExtResource("5_g81r5")
